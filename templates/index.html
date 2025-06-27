@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3DNavi - On-Demand Manufacturing Platform</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>3DNavi</h1>
+            <p>On-Demand Manufacturing Platform</p>
+        </header>
+        
+        <div class="main-content">
+            <!-- 3D Renderer Section -->
+            <div class="renderer-section">
+                <h2>3D Preview</h2>
+                <div id="three-container"></div>
+                <div class="renderer-controls">
+                    <button id="reset-view">Reset View</button>
+                    <button id="wireframe-toggle">Toggle Wireframe</button>
+                </div>
+            </div>
+            
+            <!-- Configuration Section -->
+            <div class="config-section">
+                <h2>Part Configuration</h2>
+                <form id="config-form">
+                    <div class="form-group">
+                        <label for="material">Material:</label>
+                        <select id="material" name="material" required>
+                            <option value="">Select Material</option>
+                            <option value="aluminum">Aluminum</option>
+                            <option value="steel">Steel</option>
+                            <option value="titanium">Titanium</option>
+                            <option value="plastic">Plastic</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="surface_treatment">Surface Treatment:</label>
+                        <select id="surface_treatment" name="surface_treatment" required>
+                            <option value="">Select Treatment</option>
+                            <option value="none">None</option>
+                            <option value="anodizing">Anodizing</option>
+                            <option value="powder_coating">Powder Coating</option>
+                            <option value="machining">Precision Machining</option>
+                        </select>
+                    </div>
+                    
+                    <div class="dimensions-group">
+                        <h3>Dimensions (mm)</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="length">Length:</label>
+                                <input type="number" id="length" name="length" min="1" max="1000" value="100" step="0.1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="width">Width:</label>
+                                <input type="number" id="width" name="width" min="1" max="1000" value="50" step="0.1" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="thickness">Thickness:</label>
+                                <input type="number" id="thickness" name="thickness" min="0.1" max="100" value="5" step="0.1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="hole_diameter">Hole Diameter:</label>
+                                <input type="number" id="hole_diameter" name="hole_diameter" min="1" max="100" value="10" step="0.1" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="10000" value="1" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Get Quote</button>
+                </form>
+                
+                <div id="quote-result" class="quote-result hidden">
+                    <h3>Quote Details</h3>
+                    <div id="quote-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/js/three-renderer.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
